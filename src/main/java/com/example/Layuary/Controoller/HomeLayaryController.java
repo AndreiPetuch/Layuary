@@ -31,7 +31,7 @@ public class HomeLayaryController {
     }
 
     @PostMapping("/home")
-    public String add(@RequestParam String namebooks, @RequestParam String genre, Map<String, Object> model) {
+    public String add(@RequestParam(name = "namebooks") String namebooks, @RequestParam(name = "genre") String genre, Map<String, Object> model) {
         Books books1 = new Books(namebooks, genre);
         booksRepository.save(books1);
         List<Books> namebooks2 = (List<Books>) booksRepository.findAll();
