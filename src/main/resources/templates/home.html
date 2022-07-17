@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Домашняя страница </title>
+</head>
+<body>
+<div>
+    <form th:action="logout" method="post">
+        <input type="submit" value="Выход"/>
+    </form>
+</div>
+<h1 align="center"> Библиотека </h1>
+<div align="center">
+    <form method="post">
+        <input type="text" name="namebooks" placeholder="Введите название книги"/>
+        <select id="genre" name="genre">
+            <option>Бизнес-книги</option>
+            <option>Классическая литература</option>
+            <option>Детские книги</option>
+            <option>Фэнтези</option>
+            <option>Наука и образование</option>
+        </select>
+        <button type="submit"> Добавить</button>
+    </form>
+</div>
+<h2 align="center"> Список книг</h2>
+<form method="post" action="filter">
+    <input type="text" name="filter">
+    <button type="submit"> Найти книгу</button>
+</form>
+<div align="center">
+    <table>
+        <th:block th:each="book : ${namebooks}">
+            <tr>
+                <td th:text="${book.id}">...</td>
+                <td th:text="${book.namebooks}">...</td>
+                <td th:text="${book.genre}">...</td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>
